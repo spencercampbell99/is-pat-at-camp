@@ -35,6 +35,7 @@ export default function Home() {
     const [isAdmin, setIsAdmin] = React.useState(false);
 
     React.useEffect(() => {
+        if (!currentUser) return;
         const fetchData = async () => {
             let res = await _getAllData('trips');
             let now = parseInt(moment().format('YYYYMMDD'));

@@ -17,10 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <AuthProvider>
-        <TemporaryMessageProvider>
-          <body className={inter.className}>{children}</body>
-        </TemporaryMessageProvider>
-      </AuthProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        <AuthProvider>
+          <TemporaryMessageProvider>
+            {children}
+          </TemporaryMessageProvider>
+        </AuthProvider>
+      </body>
+    </html>
   );
 }
