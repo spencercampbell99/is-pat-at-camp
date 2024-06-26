@@ -79,7 +79,7 @@ export default function Home() {
 
     const checkIsAdmin = () => {
         if (currentUser) {
-            if (currentUser.uid === 'rnV8MEUCEkaxMNktAiHOhf1uks70') {
+            if (currentUser.uid === 'FbmRegQtzpTrkyofB8pUHpAWb5d2') {
                 setIsAdmin(true);
             }
         }

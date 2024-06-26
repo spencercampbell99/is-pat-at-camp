@@ -10,9 +10,6 @@
       "region": "us-east1"
     }
   },
-  "functions": {
-    "source": "functions"
-  },
   "emulators": {
     "auth": {
       "port": 9099
