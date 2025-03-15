@@ -30,7 +30,7 @@ export default function Home() {
     const { currentUser, logout } = useAuth();
     const { showMessage } = useTemporaryMessage();
     const [data, setData] = React.useState<any[]>([]);
-    const [isPatAtCamp, setIsPatAtCamp] = React.useState(false);
+    const [isSomeoneAtCamp, setIsSomeoneAtCamp] = React.useState(false);
     const [daysRemaining, setDaysRemaining] = React.useState<number>(0);
     const [isAdmin, setIsAdmin] = React.useState(false);
 
@@ -51,7 +51,7 @@ export default function Home() {
     }, []);
 
     React.useEffect(() => {
-        // loop through data, each item has "days_at_camp" and "arrival", if arrival is within "days_at_camp" of now, then set isPatAtCamp to true
+        // loop through data, each item has "days_at_camp" and "arrival", if arrival is within "days_at_camp" of now, then set isSomeoneAtCamp to true
         if (data.length) {
             const now = moment();
             for (let i = 0; i < data.length; i++) {
@@ -59,7 +59,7 @@ export default function Home() {
                 const arrival = moment(trip.arrival, 'YYYYMMDD');
                 const daysAtCamp = trip.days_at_camp;
                 if (now.isBefore(arrival.add(daysAtCamp, 'days'))) {
-                    setIsPatAtCamp(true);
+                    setIsSomeoneAtCamp(true);
                     setDaysRemaining(arrival.diff(now, 'days'));
                     break;
                 }
@@ -114,7 +114,7 @@ export default function Home() {
                     <BasicButton onClick={logout}>Logout</BasicButton>
                 </div>
                 <div className="bg-slate-500 min-h-screen flex items-center justify-center flex-col">
-                    {isPatAtCamp ? 
+                    {isSomeoneAtCamp ? 
                         <div className="bg-green-500 text-white p-4 rounded-lg shadow-lg">
                             <h2 className="text-2xl font-bold mb-4">Pat is at camp!</h2>
                         </div>
